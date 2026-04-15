@@ -84,14 +84,17 @@ function createModalManager() {
         overlay.classList.add('modal-overlay--active');
         overlay.setAttribute('aria-hidden', 'false');
 
-        // Добавляем кнопку закрытия если нет
-        if (!modal.querySelector('.modal__close')) {
+        // Добавляем хедер с кнопкой закрытия если нет
+        if (!modal.querySelector('.modal__header')) {
+            const header = document.createElement('div');
+            header.className = 'modal__header';
             const closeBtn = document.createElement('button');
             closeBtn.className = 'modal__close';
-            closeBtn.innerHTML = '×';
+            closeBtn.innerHTML = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
             closeBtn.setAttribute('aria-label', 'Закрыть');
             closeBtn.addEventListener('click', closeModal);
-            modal.insertBefore(closeBtn, modal.firstChild);
+            header.appendChild(closeBtn);
+            modal.insertBefore(header, modal.firstChild);
         }
 
         // Фокус на первый интерактивный элемент
