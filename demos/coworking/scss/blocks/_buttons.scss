@@ -1,0 +1,100 @@
+.btn-dark,
+a.btn-dark {
+	padding: 10px 20px;
+	border-radius: 80px;
+	background-color: #000;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	transition: background-color 0.2s ease-in;
+
+	&:hover {
+		background-color: #333;
+	}
+
+	&--wide {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.btn-green,
+a.btn-green {
+	padding: 10px 20px;
+	border-radius: 80px;
+	background-color: #00ae6c;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	transition: background-color 0.2s ease-in;
+
+	&:hover {
+		background-color: #00ce7f;
+	}
+}
+
+.btn-outline,
+a.btn-outline {
+	padding: 9px 20px;
+	border-radius: 80px;
+	border: 1px solid #fff;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+
+	&:hover {
+		color: #000;
+		background-color: #fff;
+	}
+}
+
+.btn-price,
+a.btn-price {
+	padding: 9px 20px;
+	border-radius: 80px;
+	border: 1px solid #000;
+	font-size: 16px;
+	font-weight: 700;
+	color: #000;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+
+	&:hover {
+		color: #fff;
+		background-color: #000;
+	}
+}
+
+.btn-tg,
+a.btn-tg {
+	display: inline-flex;
+	column-gap: 10px;
+	padding: 10px 20px;
+	border-radius: 80px;
+	background-color: #039be5;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	transition: background-color 0.2s ease-in;
+
+	&:hover {
+		background-color: #0678b1;
+	}
+}
+
+.btn-whatsup,
+a.btn-whatsup {
+	display: inline-flex;
+	column-gap: 10px;
+	padding: 10px 20px;
+	border-radius: 80px;
+	background-color: #00ae6c;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	transition: background-color 0.2s ease-in;
+
+	&:hover {
+		background-color: #048a56;
+	}
+}
