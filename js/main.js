@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalManager = createModalManager();
     modalManager.init();
 
+    // Переключение темы
+    initTheme();
+
     // Динамический хедер
     initDynamicHeader();
 
@@ -134,6 +137,35 @@ function createModalManager() {
     return { init };
 }
 
+// Переключение темы
+function initTheme() {
+    const btns = document.querySelectorAll('.theme-toggle');
+    if (!btns.length) return;
+
+    function updateLabels() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.querySelectorAll('.mobile-menu__theme-label').forEach(el => {
+            el.textContent = isDark ? 'Тёмная тема' : 'Светлая тема';
+        });
+    }
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.removeItem('theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateLabels();
+        });
+    });
+
+    updateLabels();
+}
+
 // Анимации при скролле
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -207,6 +239,10 @@ function initMobileMenu() {
     function openMenu() {
         isOpen = true;
         scrollY = window.scrollY;
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        if (scrollbarWidth > 0) {
+            document.documentElement.style.paddingRight = scrollbarWidth + 'px';
+        }
         menu.classList.add('mobile-menu--active');
         burger.classList.add('burger--active');
         burger.setAttribute('aria-expanded', 'true');
@@ -228,6 +264,7 @@ function initMobileMenu() {
         document.body.style.position = '';
         document.body.style.width = '';
         document.body.style.paddingRight = '';
+        document.documentElement.style.paddingRight = '';
         window.scrollTo({ top: scrollY, behavior: 'instant' });
     }
 
@@ -247,7 +284,7 @@ function initMobileMenu() {
 
     // Закрытие при клике на обычную ссылку
     menu.querySelectorAll(
-        'a:not([data-modal-target]), button:not([data-modal-target])',
+        'a:not([data-modal-target]), button:not([data-modal-target]):not(.theme-toggle)',
     ).forEach((link) => {
         link.addEventListener('click', closeMenu);
     });
