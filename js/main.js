@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalManager = createModalManager();
     modalManager.init();
 
-    // Анимации при скролле
-    initScrollAnimations();
-
     // Динамический хедер
     initDynamicHeader();
 
@@ -14,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Эффект печатания в hero
     initTypingEffect();
+});
+
+// Анимации запускаем после полной загрузки страницы,
+// чтобы getBoundingClientRect() вернул реальные размеры с учётом картинок
+window.addEventListener('load', () => {
+    initScrollAnimations();
 });
 
 function createModalManager() {
@@ -137,6 +140,16 @@ function initScrollAnimations() {
 
     if (animatedElements.length === 0) return;
 
+    // Элементы уже в viewport при загрузке получают задержку по порядку
+    let inViewIndex = 0;
+    animatedElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.style.transitionDelay = `${inViewIndex * 120}ms`;
+            inViewIndex++;
+        }
+    });
+
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
@@ -147,8 +160,8 @@ function initScrollAnimations() {
             });
         },
         {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px',
         },
     );
 
@@ -189,15 +202,17 @@ function initMobileMenu() {
 
     let isOpen = false;
 
+    let scrollY = 0;
+
     function openMenu() {
         isOpen = true;
+        scrollY = window.scrollY;
         menu.classList.add('mobile-menu--active');
         burger.classList.add('burger--active');
         burger.setAttribute('aria-expanded', 'true');
         menu.setAttribute('aria-hidden', 'false');
-        // Фиксируем позицию чтобы не было скролла
         document.body.style.position = 'fixed';
-        document.body.style.top = `-${window.scrollY}px`;
+        document.body.style.top = `-${scrollY}px`;
         document.body.style.width = '100%';
         document.body.classList.add('no-scroll');
     }
@@ -208,12 +223,12 @@ function initMobileMenu() {
         burger.classList.remove('burger--active');
         burger.setAttribute('aria-expanded', 'false');
         menu.setAttribute('aria-hidden', 'true');
-        // Восстанавливаем скролл
         document.body.classList.remove('no-scroll');
-        document.body.style.position = '';
         document.body.style.top = '';
+        document.body.style.position = '';
         document.body.style.width = '';
         document.body.style.paddingRight = '';
+        window.scrollTo({ top: scrollY, behavior: 'instant' });
     }
 
     burger.addEventListener('click', () => {
