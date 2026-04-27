@@ -204,7 +204,30 @@
                     <p class="section-subtitle">Мои последние работы</p>
                 </div>
                 <div class="portfolio__grid">
-                    <!-- KPGP -->
+                    <!-- App-side -->
+                    <a data-modal-target="modal-appside" class="project-card animate-on-scroll">
+                        <div class="project-card__header">
+                            <div class="project-card__img">
+                                <img src="./img/portfolio/appside.jpg" alt="App-side">
+                            </div>
+                            <div class="project-card__overlay">
+                                <span class="project-card__badge">Подробнее</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <h3 class="project-card__title">Сайт для разработчиков IT-решений</h3>
+                            <p class="project-card__desc">Вёрстка макета и запуск сайта на сервере с настройкой форм
+                                обратной связи
+                            </p>
+                            <div class="project-card__tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Sauna -->
                     <a data-modal-target="modal-sauna" class="project-card animate-on-scroll">
                         <div class="project-card__header">
                             <div class="project-card__img">
@@ -220,27 +243,6 @@
                             <div class="project-card__tags">
                                 <span class="tag">HTML</span>
                                 <span class="tag">SCSS</span>
-                                <span class="tag">WordPress</span>
-                                <span class="tag">JavaScript</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- DFD -->
-                    <a data-modal-target="modal-dfd" class="project-card animate-on-scroll">
-                        <div class="project-card__header">
-                            <div class="project-card__img">
-                                <img src="./img/portfolio/dfd.jpg" alt="Интернет-магазин кроссовок DFD">
-                            </div>
-                            <div class="project-card__overlay">
-                                <span class="project-card__badge">Подробнее</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <h3 class="project-card__title">Интернет-магазин кроссовок</h3>
-                            <p class="project-card__desc">Полноценный интернет-магазин на базе WordPress с WooCommerce
-                            </p>
-                            <div class="project-card__tags">
                                 <span class="tag">WordPress</span>
                                 <span class="tag">JavaScript</span>
                             </div>
@@ -354,7 +356,6 @@
         <div class="modal__content">
             <h2 class="modal__title">Сайт для сауны</h2>
             <div class="modal__text">
-                <p>Верстка лендинга. Одностраничный сайт для для банного бизнеса.</p>
                 <p>Верстка страницы по макету из Figma. Форма обратной связи, использование flex-box, адаптация под
                     мобильные устройства. Дальнейшая настройка сайта через WordPress - перенос верстки на движок,
                     настройка админ панели для управления контентом на сайте. Базовая SEO оптимизация.</p>
@@ -374,25 +375,24 @@
         </div>
     </div>
 
-    <!-- Modal: DFD -->
-    <div class="modal" id="modal-dfd" data-original-parent="body" style="display: none;">
+    <!-- Modal: Appside -->
+    <div class="modal" id="modal-appside" data-original-parent="body" style="display: none;">
         <div class="modal__img">
-            <img src="./img/portfolio/dfd.jpg" alt="DFD">
+            <img src="./img/portfolio/appside.jpg" alt="Appside">
         </div>
         <div class="modal__content">
-            <h2 class="modal__title">Интернет-магазин кроссовок и одежды</h2>
+            <h2 class="modal__title">Сайт для разработчиков IT-решений</h2>
             <div class="modal__text">
-                <p>Полная настройка интернет-магазина на базе WordPress, подключение WooCommerce.</p>
-                <p>Настройка хостинга, подключение SSL-сертификата, настройка почты и автоматической отправки сообщений,
-                    настройка платежей и доставки, загрузка и настройка каталога товаров, настройка страниц через
-                    Elementor, работа с плагинами, дополнительная настройка функционала через скрипты JS.</p>
+                <p>Настройка хостинга, подключение SSL-сертификата, настройка почты, вёрстка макета Figma с последующей
+                    настройкой "боевого" сервера, применение css анимаций, JS скриптов, адаптивная вёрстка.</p>
             </div>
             <div class="modal__tags">
-                <span class="tag">WordPress</span>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
                 <span class="tag">JavaScript</span>
             </div>
             <div class="modal__btns">
-                <a href="https://dfdmarket.ru" target="_blank" class="btn-link">
+                <a href="https://app-side.ru/" target="_blank" class="btn-link">
                     <img src="./img/icons/link.svg" alt="">
                     Смотреть демо
                 </a>
